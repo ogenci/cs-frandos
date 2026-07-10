@@ -106,11 +106,11 @@ export default function Home() {
 
           {/* Logo - left */}
           <Link href="/" className="flex items-center shrink-0 gap-2.5">
-            <img src="/logo.png" alt="CS Frandos" className="h-8 w-auto" />
+            <img src="/logo.png" alt="CS Franddos" className="h-8 w-auto" />
             <span className={`text-base font-bold tracking-wider uppercase transition-colors duration-300 ${
               isScrolled ? 'text-primary' : 'text-white'
             }`}>
-              CS <span className="text-secondary">Frandos</span>
+              CS <span className="text-secondary">Franddos</span>
             </span>
           </Link>
 
@@ -192,9 +192,9 @@ export default function Home() {
               {/* Panel Header */}
               <div className="flex items-center justify-between px-7 py-6 border-b border-border/60">
                 <div className="flex items-center gap-2">
-                  <img src="/logo.png" alt="CS Frandos" className="h-8 w-auto" />
+                  <img src="/logo.png" alt="CS Franddos" className="h-8 w-auto" />
                   <span className="text-lg font-bold tracking-tight text-primary">
-                    CS <span className="text-secondary">Frandos</span>
+                    CS <span className="text-secondary">Franddos</span>
                   </span>
                 </div>
                 <button
@@ -294,7 +294,7 @@ export default function Home() {
                 transition={{ duration: 0.9, delay: 0.55 }}
                 className="text-sm sm:text-base md:text-lg text-white max-w-xs sm:max-w-md md:max-w-xl mb-8 sm:mb-10 font-light leading-relaxed opacity-80 mx-auto"
               >
-                From your passport to your plane ticket, from your visa to your first day on the job abroad, CS Frandos Limited turns "someday" into a departure date.
+                From your passport to your plane ticket, from your visa to your first day on the job abroad, CS Franddos Limited turns "someday" into a departure date.
               </motion.p>
 
               {/* CTAs */}
@@ -667,7 +667,7 @@ export default function Home() {
                   },
                   {
                     title: 'Enjoy Your Journey',
-                    desc: 'Relax and explore while CS Frandos handles every detail, ensuring a smooth and unforgettable transition.',
+                    desc: 'Relax and explore while CS Franddos handles every detail, ensuring a smooth and unforgettable transition.',
                     icon: Globe,
                     img: parisImg,
                   },
@@ -876,7 +876,7 @@ export default function Home() {
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
-              { name: 'Kwame Mensah', role: 'IT Professional, Canada', text: 'CS Frandos handled my express entry with absolute professionalism. Their attention to detail meant my application was approved without a single request for additional documents.', img: test1Img },
+              { name: 'Kwame Mensah', role: 'IT Professional, Canada', text: 'CS Franddos handled my express entry with absolute professionalism. Their attention to detail meant my application was approved without a single request for additional documents.', img: test1Img },
               { name: 'Abena Osei', role: 'Student, UK', text: 'From securing my university admission to guiding me through the intensive Tier 4 visa process, they were exceptional. I am now living my dream in London.', img: test2Img },
               { name: 'David Ansah', role: 'Business Executive, UAE', text: 'For corporate travel and premium visa services, there is no other agency I trust. They understand the urgency of business and deliver flawlessly every time.', img: test3Img },
             ].map((testimonial, i) => (
@@ -1019,7 +1019,7 @@ export default function Home() {
                   allowFullScreen={true}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="CS Frandos Office Location"
+                  title="CS Franddos Office Location"
                 />
               </div>
             </motion.div>
@@ -1241,7 +1241,7 @@ export default function Home() {
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
             <div className="col-span-2 lg:col-span-1">
-              <img src="/logo.png" alt="CS Frandos" className="h-10 w-auto block mb-6" />
+              <img src="/logo.png" alt="CS Franddos" className="h-10 w-auto block mb-6" />
               <p className="text-sm leading-relaxed mb-8 max-w-xs">
                 A premium travel, visa, and international recruitment agency dedicated to unlocking borders and building global careers.
               </p>
@@ -1306,7 +1306,7 @@ export default function Home() {
           </div>
 
           <div className="pt-8 border-t border-white/10 text-center text-sm flex flex-col md:flex-row justify-between items-center gap-4">
-            <p>&copy; {new Date().getFullYear()} CS Frandos Limited. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} CS Franddos Limited. All rights reserved.</p>
             <p>Designed for Global Excellence</p>
           </div>
         </div>
