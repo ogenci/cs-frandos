@@ -1,9 +1,9 @@
 import {createClient} from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import {createImageUrlBuilder} from '@sanity/image-url'
 import type {SanityImageSource} from '@sanity/image-url'
 
-const projectId = import.meta.env.VITE_SANITY_PROJECT_ID
-const dataset = import.meta.env.VITE_SANITY_DATASET
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || '9ruf4c2t'
+const dataset = import.meta.env.VITE_SANITY_DATASET || 'cs-franddos'
 
 function createSanityClient() {
   try {
@@ -23,7 +23,7 @@ function createSanityClient() {
 
 export const client = createSanityClient()
 
-const builder = client ? imageUrlBuilder(client) : null
+const builder = client ? createImageUrlBuilder(client) : null
 
 export function urlFor(source: SanityImageSource) {
   return builder?.image(source) ?? null
