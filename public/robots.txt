@@ -1,2 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /studio/
+
+Sitemap: https://cs-frandos.vercel.app/sitemap.xml

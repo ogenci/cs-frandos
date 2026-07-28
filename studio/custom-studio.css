@@ -1,0 +1,59 @@
+/* Custom Studio Styles to match the website design */
+
+:root {
+  --font-family-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif !important;
+  --font-family-serif: 'Plus Jakarta Sans', Georgia, Cambria, serif !important;
+}
+
+/* Ensure all Studio text elements use DM Sans */
+body, 
+.sanity-root, 
+[data-testid="studio-layout"],
+button,
+input,
+select,
+textarea {
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+/* Ensure headings use Plus Jakarta Sans to match the brand identity */
+h1, h2, h3, h4, h5, h6,
+[data-as="h1"],
+[data-as="h2"],
+[data-as="h3"],
+[data-as="h4"] {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+/* Fix text contrast inside selected/active list item cards */
+[data-selected] [data-ui="Text"],
+[data-selected] span,
+[data-selected] p,
+[data-selected] div,
+[data-selected] strong,
+[data-selected] time {
+  color: #faf8f5 !important;
+}
+
+/* Make the category subtitle (tag) stand out as a gold badge in selected state */
+[data-selected] [data-testid="preview-subtitle"],
+[data-selected] [data-ui="PreviewMediaCard"] + div span:last-child,
+[data-selected] > div > div > span:nth-child(2),
+[data-selected] > * > * > [data-ui="Text"]:last-of-type {
+  display: inline-block !important;
+  background-color: rgba(195, 164, 85, 0.25) !important;
+  color: #f0d89a !important;
+  border: 1px solid rgba(195, 164, 85, 0.5) !important;
+  border-radius: 4px !important;
+  padding: 1px 6px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+/* When NOT selected, give the subtitle a subtle muted color */
+[data-ui="Text"]:last-of-type {
+  opacity: 0.7;
+}
