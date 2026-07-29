@@ -81,7 +81,7 @@ export default function Home() {
       </div>
 
       {/* 0. TOP INFO BAR */}
-      <div 
+      <div
         className="fixed top-0 z-[60] bg-accent text-white/80 text-[11px] font-medium h-9 rounded-b-[4px]"
         style={{ left: 'calc(7.5vw)', right: 'calc(7.5vw)' }}
       >
@@ -125,70 +125,66 @@ export default function Home() {
       {/* 1. NAVIGATION */}
       <header className="fixed top-11 left-0 right-0 z-50 flex justify-center">
         <div className="container mx-auto px-6 md:px-12">
-          <div className={`w-full rounded-[4px] border backdrop-blur-md px-5 py-2.5 flex items-center justify-between gap-4 transition-all duration-500 ${
-            isScrolled
-              ? 'bg-white/20 shadow-lg border-white/20'
-              : 'bg-white/5 border-white/10'
-          }`}>
-
-          {/* Logo - left */}
-          <Link href="/" className="flex items-center shrink-0 gap-2.5">
-            <img src="/logo.webp" alt="CS Franddos" loading="lazy" className="h-8 w-auto" />
-            <span className={`text-base font-bold tracking-wider uppercase transition-colors duration-300 ${
-              isScrolled ? 'text-primary' : 'text-white'
+          <div className={`w-full rounded-[4px] border backdrop-blur-md px-5 py-2.5 flex items-center justify-between gap-4 transition-all duration-500 ${isScrolled
+            ? 'bg-white/20 shadow-lg border-white/20'
+            : 'bg-white/5 border-white/10'
             }`}>
-              CS <span className="text-secondary">Franddos</span>
-            </span>
-          </Link>
 
-          {/* Desktop Nav - centre pill */}
-          <nav className={`hidden lg:flex items-center justify-center gap-1 rounded-full py-2 px-4 backdrop-blur-md border transition-all duration-500 ${
-            isScrolled
+            {/* Logo - left */}
+            <Link href="/" className="flex items-center shrink-0 gap-2.5">
+              <img src="/logo.webp" alt="CS Franddos" loading="lazy" className="h-8 w-auto" />
+              <span className={`text-base font-bold tracking-wider uppercase transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white'
+                }`}>
+                CS <span className="text-secondary">Franddos</span>
+              </span>
+            </Link>
+
+            {/* Desktop Nav - centre pill */}
+            <nav className={`hidden lg:flex items-center justify-center gap-1 rounded-full py-2 px-4 backdrop-blur-md border transition-all duration-500 ${isScrolled
               ? 'bg-white/30 border-primary/10'
               : 'bg-white/10 border-white/15'
-          }`}>
-            {['Home', 'Services', 'Destinations', 'About', 'Insights', 'Contact'].map((item) => {
-              const isRoute = item === 'Services' || item === 'Destinations' || item === 'About' || item === 'Insights' || item === 'Contact';
-              const href = isRoute ? `/${item.toLowerCase()}` : `#${item.toLowerCase()}`;
-              const Tag = isRoute ? Link : 'a';
-              return (
-                <Tag
-                  key={item}
-                  href={href}
-                  className={`group flex items-center text-[11px] font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-white px-3 py-2 rounded-full hover:bg-accent ${
-                    isScrolled ? 'text-primary' : 'text-white'
-                  }`}
-                >
-                  <span className="block overflow-hidden h-[14px] leading-[14px]">
-                    <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-[14px]">
-                      <span className="block h-[14px]">{item}</span>
-                      <span className="block h-[14px]">{item}</span>
+              }`}>
+              {['Home', 'Services', 'Destinations', 'About', 'Insights', 'Contact'].map((item) => {
+                const isRoute = item === 'Services' || item === 'Destinations' || item === 'About' || item === 'Insights' || item === 'Contact';
+                const href = isRoute ? `/${item.toLowerCase()}` : `#${item.toLowerCase()}`;
+                const Tag = isRoute ? Link : 'a';
+                return (
+                  <Tag
+                    key={item}
+                    href={href}
+                    className={`group flex items-center text-[11px] font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-white px-3 py-2 rounded-full hover:bg-accent ${isScrolled ? 'text-primary' : 'text-white'
+                      }`}
+                  >
+                    <span className="block overflow-hidden h-[14px] leading-[14px]">
+                      <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-[14px]">
+                        <span className="block h-[14px]">{item}</span>
+                        <span className="block h-[14px]">{item}</span>
+                      </span>
                     </span>
-                  </span>
-                </Tag>
-              );
-            })}
-          </nav>
+                  </Tag>
+                );
+              })}
+            </nav>
 
-          {/* CTA - right */}
-          <div className="flex items-center gap-3 shrink-0">
-            <Button variant="cta" size="sm" onClick={() => openCta()} className="group shadow-sm hover:shadow-md hover:-translate-y-0.5 hidden lg:inline-flex">
+            {/* CTA - right */}
+            <div className="flex items-center gap-3 shrink-0">
+              <Button variant="cta" size="sm" onClick={() => openCta()} className="group shadow-sm hover:shadow-md hover:-translate-y-0.5 hidden lg:inline-flex">
                 <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
                   <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started</span>
                   <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started</span>
                 </span>
               </Button>
 
-            {/* Mobile Menu Toggle */}
-            <button
-              className={`lg:hidden p-1.5 rounded-lg transition-colors ${isScrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'}`}
-              onClick={() => setIsMobileMenuOpen(true)}
-              aria-label="Open menu"
-            >
-              <Menu size={22} />
-            </button>
+              {/* Mobile Menu Toggle */}
+              <button
+                className={`lg:hidden p-1.5 rounded-lg transition-colors ${isScrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'}`}
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu size={22} />
+              </button>
+            </div>
           </div>
-        </div>
         </div>
       </header>
 
@@ -271,12 +267,12 @@ export default function Home() {
                 transition={{ delay: 0.42 }}
                 className="px-7 py-7 border-t border-border/60 space-y-3"
               >
-                  <Button variant="cta" size="lg" onClick={() => openCta()} className="group w-full shadow-md hover:-translate-y-0.5">
-                    <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                      <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
-                      <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
-                    </span>
-                  </Button>
+                <Button variant="cta" size="lg" onClick={() => openCta()} className="group w-full shadow-md hover:-translate-y-0.5">
+                  <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
+                  </span>
+                </Button>
                 <p className="text-center text-sm text-muted-foreground pt-1">
                   Call us: <a href="tel:+233247789031" className="text-accent font-medium hover:underline">024 778 9031</a>
                 </p>
@@ -326,8 +322,8 @@ export default function Home() {
 
               {/* Headline - forced 2 lines */}
               <h1 className="text-[1.75rem] leading-[1.12] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.25rem] xl:text-[4rem] font-serif text-white mb-5 sm:mb-6 text-center">
-                Don't Let The Wrong Agent<br />
-                Cost You Your Future.
+                Don't Let The Wrong Recruiting<br />
+                Agency Cost You Your Future.
               </h1>
 
               {/* Subhead */}
@@ -348,11 +344,11 @@ export default function Home() {
                 className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
               >
                 <Button variant="cta" size="sm" onClick={() => openCta()} className="group hover:-translate-y-0.5 w-full sm:w-auto h-9 sm:h-10 rounded-sm text-xs">
-                    <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                      <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                      <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                    </span>
-                  </Button>
+                  <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+                  </span>
+                </Button>
                 <Link href="/services" className="w-full sm:w-auto">
                   <Button size="sm" variant="outline" className="group border-white/35 text-white hover:bg-accent hover:text-white w-full sm:w-auto font-medium uppercase tracking-wider backdrop-blur-sm bg-transparent h-9 sm:h-10 text-xs px-6 flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 rounded-sm">
                     <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
@@ -375,41 +371,41 @@ export default function Home() {
         >
           <div className="mx-[calc(7.5vw-12px)] overflow-hidden">
             <div className="flex whitespace-nowrap animate-ticker items-center h-16 md:h-18 gap-16">
-            {[
-              { flag: '🇨🇦', name: 'Canada' },
-              { flag: '🇬🇧', name: 'United Kingdom' },
-              { flag: '🇺🇸', name: 'United States' },
-              { flag: '🇦🇪', name: 'UAE' },
-              { flag: '🇩🇪', name: 'Germany' },
-              { flag: '🇦🇺', name: 'Australia' },
-              { flag: '🇫🇷', name: 'France' },
-              { flag: '🇳🇱', name: 'Netherlands' },
-              { flag: '🇮🇹', name: 'Italy' },
-              { flag: '🇪🇸', name: 'Spain' },
-            ].map((country, i) => (
-              <span key={i} className="inline-flex items-center gap-3 text-white/80">
-                <span className="text-xl sm:text-2xl leading-none">{country.flag}</span>
-                <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">{country.name}</span>
-              </span>
-            ))}
-            {/* Duplicate for seamless loop */}
-            {[
-              { flag: '🇨🇦', name: 'Canada' },
-              { flag: '🇬🇧', name: 'United Kingdom' },
-              { flag: '🇺🇸', name: 'United States' },
-              { flag: '🇦🇪', name: 'UAE' },
-              { flag: '🇩🇪', name: 'Germany' },
-              { flag: '🇦🇺', name: 'Australia' },
-              { flag: '🇫🇷', name: 'France' },
-              { flag: '🇳🇱', name: 'Netherlands' },
-              { flag: '🇮🇹', name: 'Italy' },
-              { flag: '🇪🇸', name: 'Spain' },
-            ].map((country, i) => (
-              <span key={`dup-${i}`} className="inline-flex items-center gap-3 text-white/80">
-                <span className="text-xl sm:text-2xl leading-none">{country.flag}</span>
-                <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">{country.name}</span>
-              </span>
-            ))}
+              {[
+                { flag: '🇨🇦', name: 'Canada' },
+                { flag: '🇬🇧', name: 'United Kingdom' },
+                { flag: '🇺🇸', name: 'United States' },
+                { flag: '🇦🇪', name: 'UAE' },
+                { flag: '🇩🇪', name: 'Germany' },
+                { flag: '🇦🇺', name: 'Australia' },
+                { flag: '🇫🇷', name: 'France' },
+                { flag: '🇳🇱', name: 'Netherlands' },
+                { flag: '🇮🇹', name: 'Italy' },
+                { flag: '🇪🇸', name: 'Spain' },
+              ].map((country, i) => (
+                <span key={i} className="inline-flex items-center gap-3 text-white/80">
+                  <span className="text-xl sm:text-2xl leading-none">{country.flag}</span>
+                  <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">{country.name}</span>
+                </span>
+              ))}
+              {/* Duplicate for seamless loop */}
+              {[
+                { flag: '🇨🇦', name: 'Canada' },
+                { flag: '🇬🇧', name: 'United Kingdom' },
+                { flag: '🇺🇸', name: 'United States' },
+                { flag: '🇦🇪', name: 'UAE' },
+                { flag: '🇩🇪', name: 'Germany' },
+                { flag: '🇦🇺', name: 'Australia' },
+                { flag: '🇫🇷', name: 'France' },
+                { flag: '🇳🇱', name: 'Netherlands' },
+                { flag: '🇮🇹', name: 'Italy' },
+                { flag: '🇪🇸', name: 'Spain' },
+              ].map((country, i) => (
+                <span key={`dup-${i}`} className="inline-flex items-center gap-3 text-white/80">
+                  <span className="text-xl sm:text-2xl leading-none">{country.flag}</span>
+                  <span className="text-xs sm:text-sm font-medium tracking-wide uppercase">{country.name}</span>
+                </span>
+              ))}
             </div>
           </div>
         </motion.div>
@@ -501,8 +497,8 @@ export default function Home() {
                 </div>
 
                 <div className="bg-white p-5 sm:p-6 flex flex-col flex-1">
-                    <div className="w-9 h-9 rounded bg-accent/10 flex items-center justify-center text-accent mb-3 shrink-0">
-                      <service.icon strokeWidth={1.5} size={18} />
+                  <div className="w-9 h-9 rounded bg-accent/10 flex items-center justify-center text-accent mb-3 shrink-0">
+                    <service.icon strokeWidth={1.5} size={18} />
                   </div>
                   <h3 className="text-lg sm:text-xl font-serif text-primary mb-1 leading-tight">{service.title}</h3>
                   <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
@@ -519,10 +515,10 @@ export default function Home() {
 
       {/* 5.5 CEO SECTION */}
       <section className="relative py-28 md:py-36 bg-accent-light overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]" style={{backgroundImage: `radial-gradient(circle at 25% 50%, #C9A84C 0%, transparent 50%), radial-gradient(circle at 75% 50%, #5A3A78 0%, transparent 50%)`}} />
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `radial-gradient(circle at 25% 50%, #C9A84C 0%, transparent 50%), radial-gradient(circle at 75% 50%, #5A3A78 0%, transparent 50%)` }} />
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/40 to-transparent" />
-        
+
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="flex flex-col lg:flex-row items-stretch gap-0">
             {/* CEO Image */}
@@ -622,12 +618,12 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { img: parisImg,    name: 'Paris',        country: 'France',      rating: 4.9, reviews: 1200, price: '₵1,299', duration: '6 Day 5 Night', slug: 'paris' },
-              { img: dubaiImg,    name: 'Dubai',        country: 'UAE',         rating: 5.0, reviews: 2148, price: '₵999',   duration: '4 Day 3 Night', slug: 'dubai' },
-              { img: londonImg,   name: 'London',       country: 'UK',          rating: 4.8, reviews: 1850, price: '₵1,499', duration: '7 Day 6 Night', slug: 'london' },
-              { img: torontoImg,  name: 'Toronto',      country: 'Canada',      rating: 4.9, reviews: 980,  price: '₵1,199', duration: '5 Day 4 Night', slug: 'toronto' },
-              { img: nycImg,      name: 'New York',     country: 'USA',         rating: 4.7, reviews: 3200, price: '₵1,350', duration: '6 Day 5 Night', slug: 'new-york' },
-              { img: amsterdamImg,name: 'Amsterdam',    country: 'Netherlands', rating: 4.8, reviews: 740,  price: '₵1,099', duration: '5 Day 4 Night', slug: 'amsterdam' },
+              { img: parisImg, name: 'Paris', country: 'France', rating: 4.9, reviews: 1200, price: '₵1,299', duration: '6 Day 5 Night', slug: 'paris' },
+              { img: dubaiImg, name: 'Dubai', country: 'UAE', rating: 5.0, reviews: 2148, price: '₵999', duration: '4 Day 3 Night', slug: 'dubai' },
+              { img: londonImg, name: 'London', country: 'UK', rating: 4.8, reviews: 1850, price: '₵1,499', duration: '7 Day 6 Night', slug: 'london' },
+              { img: torontoImg, name: 'Toronto', country: 'Canada', rating: 4.9, reviews: 980, price: '₵1,199', duration: '5 Day 4 Night', slug: 'toronto' },
+              { img: nycImg, name: 'New York', country: 'USA', rating: 4.7, reviews: 3200, price: '₵1,350', duration: '6 Day 5 Night', slug: 'new-york' },
+              { img: amsterdamImg, name: 'Amsterdam', country: 'Netherlands', rating: 4.8, reviews: 740, price: '₵1,099', duration: '5 Day 4 Night', slug: 'amsterdam' },
             ].map((pkg, i) => (
               <Link key={i} href={`/destination/${pkg.slug}`} className="block">
                 <Reveal
@@ -682,11 +678,11 @@ export default function Home() {
           {/* Bottom CTA */}
           <Reveal y={20} duration={0.7} delay={0.3} className="flex justify-center mt-14">
             <Button variant="cta" size="lg" onClick={() => openCta()} className="group shadow-md hover:-translate-y-0.5">
-                <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
-                </span>
-              </Button>
+              <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
+                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
+                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
+              </span>
+            </Button>
           </Reveal>
         </div>
       </section>
@@ -718,10 +714,10 @@ export default function Home() {
       <section className="py-24 md:py-32 bg-background overflow-hidden">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            
+
             {/* Left side - content and interactive steps */}
             <div className="lg:col-span-6 flex flex-col justify-center">
-             
+
               {/* Header Info */}
               <div className="mb-16 text-left">
                 <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">
@@ -765,19 +761,17 @@ export default function Home() {
                       key={idx}
                       onClick={() => setActiveStep(idx)}
                       onMouseEnter={() => setActiveStep(idx)}
-                       className={`flex items-start gap-4 p-5 cursor-pointer transition-all duration-300 rounded border ${
-                          isActive
-                            ? 'bg-white border-accent/20 shadow-md shadow-accent/5'
-                            : 'bg-transparent border-transparent hover:bg-muted/10'
+                      className={`flex items-start gap-4 p-5 cursor-pointer transition-all duration-300 rounded border ${isActive
+                        ? 'bg-white border-accent/20 shadow-md shadow-accent/5'
+                        : 'bg-transparent border-transparent hover:bg-muted/10'
                         }`}
                       layoutId={`step-card-${idx}`}
                       transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                     >
                       {/* Icon container */}
                       <div
-                         className={`flex-shrink-0 w-12 h-12 rounded flex items-center justify-center transition-colors duration-300 ${
-                          isActive ? 'bg-accent/10 text-accent' : 'bg-muted text-muted-foreground'
-                        }`}
+                        className={`flex-shrink-0 w-12 h-12 rounded flex items-center justify-center transition-colors duration-300 ${isActive ? 'bg-accent/10 text-accent' : 'bg-muted text-muted-foreground'
+                          }`}
                       >
                         <IconComponent strokeWidth={1.5} size={20} />
                       </div>
@@ -785,9 +779,8 @@ export default function Home() {
                       {/* Text content */}
                       <div>
                         <h4
-                          className={`text-lg font-serif font-bold transition-colors duration-300 ${
-                            isActive ? 'text-primary' : 'text-foreground/80'
-                          }`}
+                          className={`text-lg font-serif font-bold transition-colors duration-300 ${isActive ? 'text-primary' : 'text-foreground/80'
+                            }`}
                         >
                           {step.title}
                         </h4>
@@ -811,10 +804,10 @@ export default function Home() {
                       activeStep === 0
                         ? serviceTravelImg
                         : activeStep === 1
-                        ? serviceJobsImg
-                        : activeStep === 2
-                        ? serviceVisaImg
-                        : parisImg
+                          ? serviceJobsImg
+                          : activeStep === 2
+                            ? serviceVisaImg
+                            : parisImg
                     }
                     alt="Trip step destination visual"
                     loading="lazy"
@@ -836,10 +829,10 @@ export default function Home() {
       {/* 10. INTERNATIONAL RECRUITMENT */}
       <section id="recruitment" className="py-24 md:py-32 bg-[#F5F2EB] relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-white/60 via-transparent to-transparent pointer-events-none" />
-        
+
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Left Info Column */}
             <Reveal y={30} duration={0.8} className="lg:col-span-5 text-left">
               <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">
@@ -862,39 +855,39 @@ export default function Home() {
             {/* Right Countries Grid */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {[
-                { 
-                  country: 'Canada', 
+                {
+                  country: 'Canada',
                   flag: '🇨🇦',
-                  code: 'CAN', 
+                  code: 'CAN',
                   pathways: ['Healthcare Leadership', 'Advanced Tech / AI', 'Engineering Services']
                 },
-                { 
-                  country: 'United States', 
+                {
+                  country: 'United States',
                   flag: '🇺🇸',
-                  code: 'USA', 
+                  code: 'USA',
                   pathways: ['Software & Cloud Systems', 'Clinical & Life Sciences', 'Strategic Management']
                 },
-                { 
-                  country: 'Germany', 
+                {
+                  country: 'Germany',
                   flag: '🇩🇪',
-                  code: 'DEU', 
+                  code: 'DEU',
                   pathways: ['Engineering & Automotive', 'Medical Specialists', 'Technical Trades']
                 },
-                { 
-                  country: 'Serbia', 
+                {
+                  country: 'Serbia',
                   flag: '🇷🇸',
-                  code: 'SRB', 
+                  code: 'SRB',
                   pathways: ['IT & Software Development', 'Engineering & Manufacturing', 'Medical & Healthcare']
                 },
-                { 
-                  country: 'Gulf Countries', 
+                {
+                  country: 'Gulf Countries',
                   flag: '🇦🇪',
-                  code: 'GCC', 
+                  code: 'GCC',
                   pathways: ['Oil & Gas Engineering', 'Hospitality Management', 'Construction & Infrastructure']
                 },
               ].map((loc, i) => (
-                <Reveal 
-                  key={i} 
+                <Reveal
+                  key={i}
                   delay={i * 0.1}
                   y={30}
                   duration={0.8}
@@ -974,14 +967,14 @@ export default function Home() {
       {/* 13. CONTACT SECTION */}
       <section id="contact" className="py-24 md:py-32 bg-background relative">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#F5F0E8] hidden lg:block rounded"></div>
-        
+
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-            
+
             <Reveal x={-30} y={0} duration={0.8}>
               <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">Get In Touch</h2>
               <p className="text-muted-foreground text-lg mb-12">Visit our office or reach out to our team of experts. Your global journey begins with a single conversation.</p>
-              
+
               <div className="space-y-8">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center shrink-0">
@@ -989,7 +982,7 @@ export default function Home() {
                   </div>
                   <div>
                     <h5 className="font-bold text-primary text-lg">Head Office</h5>
-                    <p className="text-muted-foreground mt-1">Ashiaman, Near Tigo Office<br/>Greater Accra, Ghana</p>
+                    <p className="text-muted-foreground mt-1">Ashiaman, Near Tigo Office<br />Greater Accra, Ghana</p>
                   </div>
                 </div>
 
@@ -1034,10 +1027,10 @@ export default function Home() {
               </div>
             </Reveal>
 
-             <Reveal x={30} y={0} duration={0.8} className="bg-white p-8 md:p-12 rounded shadow-xl border border-border/50">
-               <h3 className="text-2xl font-serif text-primary mb-8 font-bold">Request a Consultation</h3>
-               <ContactForm />
-             </Reveal>
+            <Reveal x={30} y={0} duration={0.8} className="bg-white p-8 md:p-12 rounded shadow-xl border border-border/50">
+              <h3 className="text-2xl font-serif text-primary mb-8 font-bold">Request a Consultation</h3>
+              <ContactForm />
+            </Reveal>
 
           </div>
         </div>
@@ -1119,11 +1112,11 @@ export default function Home() {
             Your Journey Starts Here
           </h2>
           <Button variant="cta" size="xl" onClick={() => openCta()} className="group shadow-lg shadow-black/10 hover:-translate-y-0.5">
-              <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
-              </span>
-            </Button>
+            <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
+              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
+              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
+            </span>
+          </Button>
         </div>
       </section>
 
@@ -1147,7 +1140,7 @@ export default function Home() {
                   <Twitter size={18} />
                 </a>
                 <a href="https://wa.me/233247789031" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-secondary hover:text-primary hover:border-secondary transition-all" aria-label="WhatsApp">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
                 </a>
               </div>
             </div>
@@ -1179,14 +1172,14 @@ export default function Home() {
               <ul className="space-y-4 text-sm">
                 <li className="flex items-start gap-3">
                   <MapPin size={18} className="text-secondary shrink-0 mt-0.5" />
-                  <span>Ashiaman, Near Tigo Office<br/>Greater Accra, Ghana</span>
+                  <span>Ashiaman, Near Tigo Office<br />Greater Accra, Ghana</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Phone size={18} className="text-secondary shrink-0 mt-0.5" />
                   <div>
-                    <span>024 778 9031</span><br/>
-                    <span>024 203 5562</span><br/>
-                    <span>059 873 7651</span><br/>
+                    <span>024 778 9031</span><br />
+                    <span>024 203 5562</span><br />
+                    <span>059 873 7651</span><br />
                     <span>059 825 6003</span>
                   </div>
                 </li>
