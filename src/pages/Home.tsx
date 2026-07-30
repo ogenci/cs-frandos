@@ -34,6 +34,7 @@ export default function Home() {
   const [featuredTestimonials, setFeaturedTestimonials] = React.useState<any[]>([]);
 
   const [latestPosts, setLatestPosts] = React.useState<any[]>([]);
+  const [postsLoading, setPostsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +46,10 @@ export default function Home() {
 
   React.useEffect(() => {
     getLatestTestimonials(4).then(setFeaturedTestimonials);
-    getLatestPosts(3).then(setLatestPosts);
+    getLatestPosts(3).then(posts => {
+      setLatestPosts(posts)
+      setPostsLoading(false)
+    })
   }, []);
 
   React.useEffect(() => {
@@ -1049,7 +1053,25 @@ export default function Home() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {latestPosts.map((post, i) => (
+            {postsLoading ? (
+              Array.from({length: 3}).map((_, i) => (
+                <div key={i} className="flex flex-col border border-border/60 bg-background rounded-[4px] overflow-hidden shadow-sm animate-pulse">
+                  <div className="h-48 bg-muted" />
+                  <div className="flex flex-col flex-1 p-5 space-y-3">
+                    <div className="h-3 w-24 bg-muted rounded" />
+                    <div className="h-4 w-full bg-muted rounded" />
+                    <div className="h-4 w-3/4 bg-muted rounded" />
+                    <div className="h-3 w-full bg-muted rounded mt-2" />
+                    <div className="h-3 w-2/3 bg-muted rounded" />
+                  </div>
+                </div>
+              ))
+            ) : latestPosts.length === 0 ? (
+              <div className="col-span-full text-center text-muted-foreground py-12">
+                No articles yet. Check back soon.
+              </div>
+            ) : (
+              latestPosts.map((post, i) => (
               <Reveal
                 key={post._id}
                 delay={i * 0.1}
@@ -1099,7 +1121,7 @@ export default function Home() {
                   </div>
                 </div>
               </Reveal>
-            ))}
+            )))}
           </div>
         </div>
       </section>

@@ -81,7 +81,7 @@ export function getPosts(): Promise<any[]> {
   if (!client) return Promise.resolve([])
   return safeFetch(() =>
     client!.fetch(
-      `*[_type == "post"] | order(date desc) {
+      `*[_type == "post"] | order(coalesce(date, _createdAt) desc) {
         _id, title, slug, tag, summary, date, readTime, author,
         "imageUrl": image.asset->url
       }`
@@ -105,7 +105,7 @@ export function getLatestPosts(count: number = 3): Promise<any[]> {
   if (!client) return Promise.resolve([])
   return safeFetch(() =>
     client!.fetch(
-      `*[_type == "post"] | order(date desc) [0...$count] {
+      `*[_type == "post"] | order(coalesce(date, _createdAt) desc) [0...$count] {
         _id, title, slug, tag, summary, date, readTime, author,
         "imageUrl": image.asset->url
       }`,
