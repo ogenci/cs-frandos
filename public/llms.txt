@@ -1,0 +1,28 @@
+# CS Franddos Limited
+> Premium travel, visa, passport, and international recruitment agency based in Ashiaman, Greater Accra, Ghana. Serving clients in 40+ countries since 2017.
+
+## Pages
+
+- [Home](https://csfranddos.com/): Company overview, featured destinations, client testimonials, services summary, FAQ
+- [About](https://csfranddos.com/about/): Company history, mission, values, team milestones
+- [Services](https://csfranddos.com/services/): Travel & tour packages, international job recruitment, visa applications, passport & document assistance
+- [Destinations](https://csfranddos.com/destinations/): Travel guides for Paris, Dubai, London, Toronto, New York, and Amsterdam
+- [Insights](https://csfranddos.com/insights/): Blog articles on travel tips, visa guides, and career advice
+- [Contact](https://csfranddos.com/contact/): Contact form, office address, phone numbers, and email
+- [Reviews](https://csfranddos.com/reviews/): Client video testimonials and reviews
+- [Vacancies](https://csfranddos.com/vacancies/): Current job openings at CS Franddos
+
+## Contact
+
+- Phone: +233 247 789 031 / +233 242 035 562
+- Email: csfranddosltd@gmail.com
+- Address: Ashiaman, Near Tigo Office, Greater Accra, Ghana
+
+## Structured Data
+
+This site uses JSON-LD structured data on every page:
+- Organization schema (name, logo, contact info, address)
+- LocalBusiness schema (services, hours, price range)
+- FAQPage schema on the home page
+- Article schema on each blog post
+- BreadcrumbList schema on interior pages
