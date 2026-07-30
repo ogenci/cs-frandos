@@ -29,7 +29,7 @@ export default function Destinations() {
         title="Destinations"
         description="Explore CS Franddos handpicked travel destinations — Paris, London, Dubai, New York, Toronto, Amsterdam, and more."
         path="/destinations"
-        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://cs-frandos.vercel.app'}, {name: 'Destinations', url: 'https://cs-frandos.vercel.app/destinations'}])}
+        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'Destinations', url: 'https://csfranddos.com/destinations'}])}
       />
       <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
         <img

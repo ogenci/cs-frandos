@@ -64,7 +64,7 @@ export default function About() {
         title="About"
         description="Learn about CS Franddos Limited — a premium travel, visa, and international recruitment agency based in Ashiaman, Ghana."
         path="/about"
-        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://cs-frandos.vercel.app'}, {name: 'About', url: 'https://cs-frandos.vercel.app/about'}])}
+        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'About', url: 'https://csfranddos.com/about'}])}
       />
       <section className="relative h-[45vh] md:h-[55vh] overflow-hidden">
         <img

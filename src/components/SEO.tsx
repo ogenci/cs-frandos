@@ -1,7 +1,7 @@
 import {Helmet} from 'react-helmet-async'
 
 const SITE_NAME = 'CS Franddos Limited'
-const SITE_URL = 'https://cs-frandos.vercel.app'
+const SITE_URL = 'https://csfranddos.com'
 const DEFAULT_DESC = 'Travel, visa, immigration, and passport services based in Ashiaman, Ghana. Unlocking borders and building global careers.'
 const OG_IMAGE = '/logo.webp'
 

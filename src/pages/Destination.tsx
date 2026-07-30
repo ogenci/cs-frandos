@@ -38,7 +38,7 @@ export default function Destination() {
         description={`Travel to ${dest.name} with CS Franddos. ${dest.description?.substring(0, 150)}`}
         path={`/destination/${dest.slug}`}
         image={dest.img}
-        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://cs-frandos.vercel.app'}, {name: 'Destinations', url: 'https://cs-frandos.vercel.app/destinations'}, {name: dest.name, url: `https://cs-frandos.vercel.app/destination/${dest.slug}`}])}
+        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'Destinations', url: 'https://csfranddos.com/destinations'}, {name: dest.name, url: `https://csfranddos.com/destination/${dest.slug}`}])}
       />
       <section className="relative h-[60vh] md:h-[70vh] overflow-hidden">
         <img

@@ -137,7 +137,7 @@ export default function Services() {
         title="Services"
         description="Explore CS Franddos services — visa applications, travel & tour packages, ticketing, passport assistance, birth certificates, and international recruitment."
         path="/services"
-        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://cs-frandos.vercel.app'}, {name: 'Services', url: 'https://cs-frandos.vercel.app/services'}])}
+        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'Services', url: 'https://csfranddos.com/services'}])}
       />
       <section className="relative h-[40vh] md:h-[50vh] overflow-hidden">
         <img

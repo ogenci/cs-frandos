@@ -2,8 +2,8 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'CS Franddos Limited',
-  url: 'https://cs-frandos.vercel.app',
-  logo: 'https://cs-frandos.vercel.app/logo.webp',
+  url: 'https://csfranddos.com',
+  logo: 'https://csfranddos.com/logo.webp',
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: '+233-247-789-031',
@@ -22,7 +22,7 @@ export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'CS Franddos Limited',
-  image: 'https://cs-frandos.vercel.app/logo.webp',
+  image: 'https://csfranddos.com/logo.webp',
   telephone: ['+233-247-789-031', '+233-242-035-562'],
   email: 'csfranddosltd@gmail.com',
   address: {
@@ -31,7 +31,7 @@ export const localBusinessSchema = {
     addressLocality: 'Greater Accra',
     addressCountry: 'GH',
   },
-  url: 'https://cs-frandos.vercel.app',
+  url: 'https://csfranddos.com',
   priceRange: '$$',
   openingHours: 'Mo-Sa 08:00-17:00',
 }
@@ -69,7 +69,7 @@ export function articleSchema(title: string, description: string, url: string, i
       name: 'CS Franddos Limited',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://cs-frandos.vercel.app/logo.webp',
+        url: 'https://csfranddos.com/logo.webp',
       },
     },
   }

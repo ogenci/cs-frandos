@@ -39,7 +39,7 @@ export default function Vacancies() {
         title="Vacancies"
         description="Explore career opportunities at CS Franddos. Join our growing global team in travel, visa, and recruitment services."
         path="/vacancies"
-        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://cs-frandos.vercel.app'}, {name: 'Vacancies', url: 'https://cs-frandos.vercel.app/vacancies'}])}
+        jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'Vacancies', url: 'https://csfranddos.com/vacancies'}])}
       />
       <section className="relative h-[45vh] md:h-[55vh] overflow-hidden">
         <img

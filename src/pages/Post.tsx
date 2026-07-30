@@ -111,15 +111,15 @@ export default function Post() {
           articleSchema(
             post.title,
             post.summary || '',
-            `https://cs-frandos.vercel.app/insights/${post.slug.current}`,
+            `https://csfranddos.com/insights/${post.slug.current}`,
             post.imageUrl || '',
             post.date || '',
             post.author || 'CS Franddos'
           ),
           breadcrumbSchema([
-            {name: 'Home', url: 'https://cs-frandos.vercel.app'},
-            {name: 'Insights', url: 'https://cs-frandos.vercel.app/insights'},
-            {name: post.title, url: `https://cs-frandos.vercel.app/insights/${post.slug.current}`},
+            {name: 'Home', url: 'https://csfranddos.com'},
+            {name: 'Insights', url: 'https://csfranddos.com/insights'},
+            {name: post.title, url: `https://csfranddos.com/insights/${post.slug.current}`},
           ]),
         ]}
       />
@@ -209,7 +209,7 @@ export default function Post() {
                   <div className="flex items-center gap-3">
                     <span className="text-xs font-bold tracking-widest uppercase text-accent">Share</span>
                     <div className="flex gap-2">
-                      {[{name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://cs-frandos.vercel.app/insights/${post.slug.current}`)}`}, {name: 'Twitter', url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://cs-frandos.vercel.app/insights/${post.slug.current}`)}`}, {name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://cs-frandos.vercel.app/insights/${post.slug.current}`)}`}].map((s) => (
+                      {[{name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://csfranddos.com/insights/${post.slug.current}`)}`}, {name: 'Twitter', url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://csfranddos.com/insights/${post.slug.current}`)}`}, {name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://csfranddos.com/insights/${post.slug.current}`)}`}].map((s) => (
                         <a
                           key={s.name}
                           href={s.url}
