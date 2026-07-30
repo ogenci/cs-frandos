@@ -24,7 +24,7 @@ export function Reveal({
   as: Tag = 'div',
 }: RevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(!!(window as any).__PRERENDER__);
 
   useEffect(() => {
     const el = ref.current;

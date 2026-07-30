@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import { MotionConfig } from 'framer-motion';
 import { Route, Switch, Router as WouterRouter } from 'wouter';
 import { CtaModalProvider } from '@/components/CtaModal';
 import Home from '@/pages/Home';
@@ -58,10 +59,12 @@ function App() {
     <HelmetProvider>
       <TooltipProvider>
         <CtaModalProvider>
-          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-            <Router />
-          </WouterRouter>
-          <Toaster />
+          <MotionConfig isStatic={!!(window as any).__PRERENDER__}>
+            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+              <Router />
+            </WouterRouter>
+            <Toaster />
+          </MotionConfig>
         </CtaModalProvider>
       </TooltipProvider>
     </HelmetProvider>
