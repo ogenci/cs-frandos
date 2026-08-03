@@ -31,6 +31,15 @@ export function ContactForm({ defaultService, onSuccess }: ContactFormProps) {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+
+    if (!formData.service) {
+      toast({
+        title: 'Select a service',
+        description: 'Please choose a service of interest to continue.',
+      })
+      return
+    }
+
     setIsSubmitting(true)
 
     const serviceLabel = formData.service ? SERVICE_LABELS[formData.service] ?? formData.service : 'Not specified'
@@ -95,7 +104,7 @@ export function ContactForm({ defaultService, onSuccess }: ContactFormProps) {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-primary mb-1.5">Service of Interest</label>
+          <label className="block text-sm font-medium text-primary mb-1.5">Service of Interest *</label>
           <Select
             value={formData.service}
             onValueChange={(val) => setFormData({ ...formData, service: val })}
