@@ -305,7 +305,7 @@ export default function Post() {
                       Book a free consultation with our team today.
                     </p>
                     <Button variant="ctaGold" onClick={() => openCta()} className="w-full h-10 text-xs">
-                        Get in Touch
+                        Start Your Journey
                       </Button>
                   </div>
                 </Reveal>

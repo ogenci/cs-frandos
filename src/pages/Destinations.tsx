@@ -131,7 +131,7 @@ export default function Destinations() {
 
           <Reveal y={30} duration={0.8} className="text-center mt-12">
             <Button variant="ctaGold" onClick={() => openCta('jobs')} className="h-11 shadow-md hover:-translate-y-0.5">
-                Apply for Placement
+                Start Your Journey
             </Button>
           </Reveal>
         </div>
@@ -254,7 +254,7 @@ export default function Destinations() {
               Talk to our travel experts - we'll match you with the perfect package.
             </p>
             <Button variant="ctaGold" onClick={() => openCta('travel')} className="h-12 shadow-md hover:-translate-y-0.5">
-                Book a Consultation
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

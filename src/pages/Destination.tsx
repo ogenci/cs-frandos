@@ -135,7 +135,7 @@ export default function Destination() {
                     <span className="text-muted-foreground text-sm ml-1">/ {dest.duration}</span>
                   </div>
                   <Button variant="cta" onClick={() => openCta('travel')} className="w-full h-12 shadow-sm mb-3">
-                      Book This Package
+                      Start Your Journey
                     </Button>
                   <p className="text-xs text-center text-muted-foreground">No hidden fees • Best price guaranteed</p>
                 </div>
@@ -194,7 +194,7 @@ export default function Destination() {
               Contact our team today and let us handle everything - from visas to accommodation.
             </p>
             <Button variant="ctaGold" onClick={() => openCta()} className="h-12 shadow-md hover:-translate-y-0.5">
-                Get Started Now
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

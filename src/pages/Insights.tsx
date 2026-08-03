@@ -271,7 +271,7 @@ export default function Insights() {
               Follow our insights for the latest on visas, travel, and global career opportunities.
             </p>
             <Button variant="ctaGold" onClick={() => openCta()} className="h-12 shadow-md hover:-translate-y-0.5">
-                Subscribe
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

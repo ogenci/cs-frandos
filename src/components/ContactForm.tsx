@@ -36,7 +36,7 @@ export function ContactForm({ defaultService, onSuccess }: ContactFormProps) {
     const serviceLabel = formData.service ? SERVICE_LABELS[formData.service] ?? formData.service : 'Not specified'
 
     const whatsappText = encodeURIComponent(
-      `*New Inquiry from CS Frandos Website*\n\n` +
+      `*New Inquiry from CS Franddos Limited Website*\n\n` +
       `*Name:* ${formData.name}\n` +
       `*Email:* ${formData.email}\n` +
       `*Phone:* ${formData.phone}\n` +

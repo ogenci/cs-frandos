@@ -109,7 +109,7 @@ export default function Reviews() {
               See what CS Frandos can do for you - book a free consultation today.
             </p>
             <Button variant="ctaGold" onClick={() => openCta()} className="h-12 shadow-md hover:-translate-y-0.5">
-                Get in Touch
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

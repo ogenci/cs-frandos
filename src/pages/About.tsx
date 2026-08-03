@@ -280,7 +280,7 @@ export default function About() {
               Join thousands of clients who have trusted CS Franddos with their global ambitions.
             </p>
             <Button variant="ctaGold" onClick={() => openCta()} className="h-12 shadow-md hover:-translate-y-0.5">
-                Get in Touch
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

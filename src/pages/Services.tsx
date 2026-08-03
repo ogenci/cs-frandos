@@ -306,7 +306,7 @@ export default function Services() {
               Book a consultation with our team and take the first step toward your global journey.
             </p>
             <Button variant="ctaGold" onClick={() => openCta()} className="h-12 shadow-md hover:-translate-y-0.5">
-                Book a Consultation
+                Start Your Journey
             </Button>
           </Reveal>
         </div>

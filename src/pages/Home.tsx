@@ -174,8 +174,8 @@ export default function Home() {
             <div className="flex items-center gap-3 shrink-0">
               <Button variant="cta" size="sm" onClick={() => openCta()} className="group shadow-sm hover:shadow-md hover:-translate-y-0.5 hidden lg:inline-flex">
                 <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started</span>
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started</span>
+                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
                 </span>
               </Button>
 
@@ -273,8 +273,8 @@ export default function Home() {
               >
                 <Button variant="cta" size="lg" onClick={() => { setIsMobileMenuOpen(false); openCta(); }} className="group w-full shadow-md hover:-translate-y-0.5">
                   <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
-                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
                   </span>
                 </Button>
                 <p className="text-center text-sm text-muted-foreground pt-1">
@@ -683,8 +683,8 @@ export default function Home() {
           <Reveal y={20} duration={0.7} delay={0.3} className="flex justify-center mt-14">
             <Button variant="cta" size="lg" onClick={() => openCta()} className="group shadow-md hover:-translate-y-0.5">
               <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">View All Packages</span>
+                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
               </span>
             </Button>
           </Reveal>
@@ -1135,8 +1135,8 @@ export default function Home() {
           </h2>
           <Button variant="cta" size="xl" onClick={() => openCta()} className="group shadow-lg shadow-black/10 hover:-translate-y-0.5">
             <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
-              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Now</span>
+              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
+              <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
             </span>
           </Button>
         </div>
