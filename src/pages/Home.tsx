@@ -271,7 +271,7 @@ export default function Home() {
                 transition={{ delay: 0.42 }}
                 className="px-7 py-7 border-t border-border/60 space-y-3"
               >
-                <Button variant="cta" size="lg" onClick={() => openCta()} className="group w-full shadow-md hover:-translate-y-0.5">
+                <Button variant="cta" size="lg" onClick={() => { setIsMobileMenuOpen(false); openCta(); }} className="group w-full shadow-md hover:-translate-y-0.5">
                   <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
                     <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>
                     <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Get Started Today</span>

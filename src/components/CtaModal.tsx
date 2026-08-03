@@ -27,7 +27,7 @@ export function CtaModalProvider({ children }: { children: ReactNode }) {
     <CtaContext.Provider value={{ open, close }}>
       {children}
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-[615px] max-h-[100vh] overflow-y-auto top-[10vh] md:top-[12vh] translate-y-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
+        <DialogContent className="left-0 right-0 mx-auto translate-x-0 w-[calc(100vw-3rem)] max-w-[615px] md:left-1/2 md:right-auto md:-translate-x-1/2 md:w-full top-0 md:top-[12vh] translate-y-0 max-h-[calc(100vh-2rem)] md:max-h-[100vh] overflow-y-auto my-4 md:my-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95">
           <DialogHeader>
             <DialogTitle className="text-2xl font-serif">Get in Touch</DialogTitle>
             <DialogDescription className="text-base">
