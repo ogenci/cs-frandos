@@ -1,6 +1,6 @@
-import {createClient} from '@sanity/client'
-import {writeFileSync} from 'fs'
-import {resolve} from 'path'
+import { createClient } from '@sanity/client'
+import { writeFileSync } from 'fs'
+import { resolve } from 'path'
 
 const projectId = process.env.VITE_SANITY_PROJECT_ID || '9ruf4c2t'
 const dataset = process.env.VITE_SANITY_DATASET || 'cs-franddos'
@@ -8,18 +8,13 @@ const dataset = process.env.VITE_SANITY_DATASET || 'cs-franddos'
 const SITE = 'https://csfranddos.com'
 
 const STATIC_PAGES = [
-  {loc: '/', priority: 1.0},
-  {loc: '/about', priority: 0.8},
-  {loc: '/services', priority: 0.9},
-  {loc: '/destinations', priority: 0.8},
-  {loc: '/insights', priority: 0.8},
-  {loc: '/contact', priority: 0.7},
-  {loc: '/reviews', priority: 0.6},
-  {loc: '/vacancies', priority: 0.7},
-]
-
-const DESTINATION_SLUGS = [
-  'paris', 'dubai', 'london', 'toronto', 'new-york', 'amsterdam',
+  { loc: '/', priority: 1.0 },
+  { loc: '/about', priority: 0.8 },
+  { loc: '/services', priority: 0.9 },
+  { loc: '/insights', priority: 0.8 },
+  { loc: '/contact', priority: 0.7 },
+  { loc: '/reviews', priority: 0.6 },
+  { loc: '/vacancies', priority: 0.7 },
 ]
 
 const client = createClient({
@@ -39,6 +34,16 @@ try {
   console.warn('Failed to fetch posts from Sanity, using static URLs only:', e.message)
 }
 
+let vacancies = []
+try {
+  vacancies = await client.fetch(
+    `*[_type == "vacancy" && status == "Open" && defined(slug.current)]{ "slug": slug.current }`
+  )
+  console.log(`Fetched ${vacancies.length} vacancies from Sanity`)
+} catch (e) {
+  console.warn('Failed to fetch vacancies from Sanity:', e.message)
+}
+
 function xmlEscape(s) {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 }
@@ -52,17 +57,17 @@ for (const p of STATIC_PAGES) {
   </url>`)
 }
 
-for (const slug of DESTINATION_SLUGS) {
-  urlElements.push(`  <url>
-    <loc>${SITE}/destination/${slug}</loc>
-    <priority>0.7</priority>
-  </url>`)
-}
-
 for (const post of posts) {
   urlElements.push(`  <url>
     <loc>${SITE}/insights/${xmlEscape(post.slug)}</loc>
     ${post.date ? `<lastmod>${xmlEscape(post.date)}</lastmod>\n    ` : ''}<priority>0.7</priority>
+  </url>`)
+}
+
+for (const vacancy of vacancies) {
+  urlElements.push(`  <url>
+    <loc>${SITE}/vacancies/${xmlEscape(vacancy.slug)}</loc>
+    <priority>0.6</priority>
   </url>`)
 }
 

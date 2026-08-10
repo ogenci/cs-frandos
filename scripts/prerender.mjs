@@ -8,15 +8,12 @@ import * as cheerio from 'cheerio'
 const SITE_URL = 'https://csfranddos.com'
 
 const STATIC_ROUTES = [
-  '/', '/about', '/services', '/destinations', '/insights',
+  '/', '/about', '/services', '/insights',
   '/contact', '/reviews', '/vacancies',
 ]
 
-const DESTINATION_SLUGS = [
-  'paris', 'dubai', 'london', 'toronto', 'new-york', 'amsterdam',
-]
-
 let postSlugs = []
+let vacancySlugs = []
 try {
   const client = createClient({
     projectId: process.env.VITE_SANITY_PROJECT_ID || '9ruf4c2t',
@@ -29,14 +26,20 @@ try {
   )
   postSlugs = posts.map(p => p.slug)
   console.log(`Fetched ${postSlugs.length} post slugs for prerendering`)
+
+  const vacancies = await client.fetch(
+    `*[_type == "vacancy" && status == "Open" && defined(slug.current)]{ "slug": slug.current }`
+  )
+  vacancySlugs = vacancies.map(v => v.slug)
+  console.log(`Fetched ${vacancySlugs.length} vacancy slugs for prerendering`)
 } catch (e) {
-  console.warn('Failed to fetch posts for prerendering:', e.message)
+  console.warn('Failed to fetch content for prerendering:', e.message)
 }
 
 const routes = [
   ...STATIC_ROUTES,
-  ...DESTINATION_SLUGS.map(s => `/destination/${s}`),
   ...postSlugs.map(s => `/insights/${s}`),
+  ...vacancySlugs.map(s => `/vacancies/${s}`),
 ]
 
 const outDir = resolve(import.meta.dirname, '..', 'dist', 'public')

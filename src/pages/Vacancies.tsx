@@ -1,30 +1,19 @@
 import {useState, useEffect} from 'react'
 import {motion} from 'framer-motion'
-import {Briefcase, MapPin, Clock, Calendar} from 'lucide-react'
+import {Link} from 'wouter'
+import {Briefcase, ArrowRight} from 'lucide-react'
 import Layout from '@/components/Layout'
 import {Reveal} from '@/components/Reveal'
-import {PortableText, type TypedObject} from '@portabletext/react'
+import VacancyCard from '@/components/VacancyCard'
+import {Button} from '@/components/ui/button'
 import SEO from '@/components/SEO'
 import {breadcrumbSchema} from '@/lib/structuredData'
 import {getVacancies} from '@/lib/sanity'
 import heroImg from '@assets/generated_images/service-travel.webp'
 
-interface Vacancy {
-  _id: string
-  title: string
-  location: string
-  type: string
-  department: string
-  description: TypedObject[]
-  requirements: TypedObject[]
-  deadline: string
-  status: string
-}
-
 export default function Vacancies() {
-  const [vacancies, setVacancies] = useState<Vacancy[]>([])
+  const [vacancies, setVacancies] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
-  const [expanded, setExpanded] = useState<string | null>(null)
 
   useEffect(() => {
     getVacancies().then((data) => {
@@ -72,105 +61,52 @@ export default function Vacancies() {
 
       <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-6 md:px-12">
-          <Reveal y={24} duration={0.6} once className="mb-14">
-            <h2 className="text-3xl md:text-4xl font-serif text-primary mb-4">Open Positions</h2>
-            <p className="text-muted-foreground text-lg max-w-2xl">
-              {loading
-                ? 'Loading...'
-                : vacancies.length === 0
-                  ? 'No open vacancies at this time. Check back soon!'
-                  : `${vacancies.length} position${vacancies.length > 1 ? 's' : ''} available`}
-            </p>
-          </Reveal>
-
-          <div className="space-y-6">
-            {vacancies.map((vacancy, i) => (
-              <Reveal
-                key={vacancy._id}
-                delay={(i % 4) * 0.08}
-                y={24}
-                duration={0.55}
-                className="rounded-xl border border-border bg-card overflow-hidden shadow-sm"
-              >
-                <button
-                  onClick={() => setExpanded(expanded === vacancy._id ? null : vacancy._id)}
-                  className="w-full text-left p-6 md:p-8 hover:bg-muted/30 transition-colors"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                      <h3 className="text-xl font-serif text-primary font-bold mb-2">{vacancy.title}</h3>
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                        {vacancy.location && (
-                          <span className="flex items-center gap-1.5">
-                            <MapPin size={14} className="text-secondary" />
-                            {vacancy.location}
-                          </span>
-                        )}
-                        <span className="flex items-center gap-1.5">
-                          <Briefcase size={14} className="text-secondary" />
-                          {vacancy.type}
-                        </span>
-                        {vacancy.department && (
-                          <span>{vacancy.department}</span>
-                        )}
-                        {vacancy.deadline && (
-                          <span className="flex items-center gap-1.5">
-                            <Calendar size={14} className="text-secondary" />
-                            Deadline: {new Date(vacancy.deadline).toLocaleDateString()}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs text-secondary font-medium uppercase tracking-wider">
-                        {expanded === vacancy._id ? 'Collapse' : 'View Details'}
-                      </span>
-                      <motion.svg
-                        animate={{rotate: expanded === vacancy._id ? 180 : 0}}
-                        transition={{duration: 0.2}}
-                        width="16" height="16" viewBox="0 0 16 16" fill="none"
-                        className="text-secondary"
-                      >
-                        <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                      </motion.svg>
-                    </div>
-                  </div>
-                </button>
-
-                {expanded === vacancy._id && (
-                  <motion.div
-                    initial={{height: 0, opacity: 0}}
-                    animate={{height: 'auto', opacity: 1}}
-                    transition={{duration: 0.3, ease: [0.16, 1, 0.3, 1]}}
-                    className="border-t border-border px-6 md:px-8 py-6 space-y-6"
-                  >
-                    {vacancy.description && (
-                      <div>
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Description</h4>
-                        <div className="text-muted-foreground text-sm leading-relaxed prose prose-sm max-w-none">
-                          <PortableText value={vacancy.description} />
-                        </div>
-                      </div>
-                    )}
-                    {vacancy.requirements && (
-                      <div>
-                        <h4 className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Requirements</h4>
-                        <div className="text-muted-foreground text-sm leading-relaxed prose prose-sm max-w-none">
-                          <PortableText value={vacancy.requirements} />
-                        </div>
-                      </div>
-                    )}
-                    <div className="flex items-center gap-4 pt-2">
-                      <Clock size={14} className="text-secondary" />
-                      <span className="text-xs text-muted-foreground">
-                        Apply before {vacancy.deadline ? new Date(vacancy.deadline).toLocaleDateString('en-GB', {day: 'numeric', month: 'long', year: 'numeric'}) : 'TBD'}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-              </Reveal>
-            ))}
+          <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+            <Reveal y={24} duration={0.6} once>
+              <h2 className="text-3xl md:text-4xl font-serif text-primary mb-4">Open Positions</h2>
+              <p className="text-muted-foreground text-lg max-w-2xl">
+                {loading
+                  ? 'Loading...'
+                  : vacancies.length === 0
+                    ? 'No open vacancies at this time. Check back soon!'
+                    : `${vacancies.length} position${vacancies.length > 1 ? 's' : ''} available`}
+              </p>
+            </Reveal>
+            <Reveal y={20} duration={0.6} delay={0.1} once>
+              <Link href="/contact">
+                <Button variant="cta" size="sm" className="group gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5">
+                  Can't find your role?
+                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
+                </Button>
+              </Link>
+            </Reveal>
           </div>
+
+          {loading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {[0, 1, 2, 3].map((i) => (
+                <div key={i} className="flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-white animate-pulse">
+                  <div className="h-52 bg-muted" />
+                  <div className="flex flex-1 flex-col p-6 space-y-3">
+                    <div className="h-4 w-1/2 bg-muted rounded" />
+                    <div className="h-3 w-2/3 bg-muted rounded" />
+                    <div className="h-3 w-full bg-muted rounded" />
+                    <div className="h-10 w-full bg-muted rounded-full mt-4" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : vacancies.length === 0 ? (
+            <div className="rounded-2xl border border-dashed border-border bg-white py-16 text-center text-muted-foreground">
+              No open vacancies at this time. Check back soon!
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {vacancies.map((vacancy, i) => (
+                <VacancyCard key={vacancy._id} vacancy={vacancy} index={i} />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </Layout>

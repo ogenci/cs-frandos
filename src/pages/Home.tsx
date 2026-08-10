@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'wouter';
-import { Plane, Briefcase, FileCheck, Landmark, ArrowRight, ShieldCheck, UserCheck, Globe, Star, MapPin, Phone, Mail, ChevronRight, Search, MessageSquare, Zap, Menu, X, Play, Calendar } from 'lucide-react';
+import { Plane, Briefcase, FileCheck, Landmark, ArrowRight, Globe, MapPin, Phone, Mail, Search, MessageSquare, Zap, Calendar } from 'lucide-react';
 import { AnimatedCounter } from '@/components/AnimatedCounter';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -10,16 +10,11 @@ import SEO from '@/components/SEO';
 import { organizationSchema, localBusinessSchema, faqSchema } from '@/lib/structuredData';
 import { VideoPlayer } from '@/components/VideoPlayer';
 import { ContactForm } from '@/components/ContactForm';
-import Footer from '@/components/Footer';
-import { SocialLinks } from '@/components/SocialLinks';
+import Layout from '@/components/Layout';
+import VacancyCard from '@/components/VacancyCard';
 import { useCta } from '@/components/CtaModal';
-import { getLatestTestimonials, getLatestPosts } from '@/lib/sanity';
+import { getLatestTestimonials, getLatestPosts, getVacancies } from '@/lib/sanity';
 import parisImg from '@assets/generated_images/paris.webp';
-import dubaiImg from '@assets/generated_images/dubai.webp';
-import londonImg from '@assets/generated_images/london.webp';
-import torontoImg from '@assets/generated_images/toronto.webp';
-import nycImg from '@assets/generated_images/nyc.webp';
-import amsterdamImg from '@assets/generated_images/amsterdam.webp';
 
 import serviceTravelImg from '@assets/generated_images/service-travel.webp';
 import serviceJobsImg from '@assets/generated_images/service-jobs.webp';
@@ -28,29 +23,25 @@ import servicePassportImg from '@assets/generated_images/service-passport.webp';
 
 export default function Home() {
   const { open: openCta } = useCta();
-  const [isScrolled, setIsScrolled] = React.useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [activeStep, setActiveStep] = React.useState(0);
-  const [activeVideo, setActiveVideo] = React.useState<string | null>(null);
   const [playVideo, setPlayVideo] = React.useState(true);
   const [featuredTestimonials, setFeaturedTestimonials] = React.useState<any[]>([]);
 
   const [latestPosts, setLatestPosts] = React.useState<any[]>([]);
   const [postsLoading, setPostsLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [vacancies, setVacancies] = React.useState<any[]>([])
+  const [vacanciesLoading, setVacanciesLoading] = React.useState(true)
 
   React.useEffect(() => {
     getLatestTestimonials(4).then(setFeaturedTestimonials);
     getLatestPosts(3).then(posts => {
       setLatestPosts(posts)
       setPostsLoading(false)
+    })
+    getVacancies().then((data) => {
+      setVacancies(data)
+      setVacanciesLoading(false)
     })
   }, []);
 
@@ -72,226 +63,13 @@ export default function Home() {
   ]
 
   return (
-    <div className="flex flex-col min-h-screen bg-background overflow-x-hidden">
+    <Layout>
       <SEO
         title="Home"
         description="CS Franddos Limited — travel, visa, immigration, and passport services based in Ashiaman, Ghana. Unlocking borders and building global careers."
         path="/"
         jsonLd={[organizationSchema, localBusinessSchema, faqSchema(faqItems)]}
       />
-
-      {/* PAGE GUIDE LINES */}
-      <div className="pointer-events-none fixed inset-0 z-[999] mix-blend-difference" aria-hidden="true">
-        <div className="absolute inset-y-0 left-[calc(7.5vw-12px)] w-px bg-accent opacity-20" />
-        <div className="absolute inset-y-0 right-[calc(7.5vw-12px)] w-px bg-accent opacity-20" />
-      </div>
-
-      {/* 0. TOP INFO BAR */}
-      <div
-        className="fixed top-0 z-[60] bg-accent text-white/80 text-[11px] font-medium h-9 rounded-b-[4px]"
-        style={{ left: 'calc(7.5vw)', right: 'calc(7.5vw)' }}
-      >
-        <div className="w-full h-full px-5 flex items-center justify-between gap-4">
-
-          {/* Left - registration numbers */}
-          <div className="hidden sm:flex items-center gap-5">
-            <span className="flex items-center gap-1.5">
-              <span className="text-secondary font-semibold tracking-wide uppercase text-[9px]">Reg. No.</span>
-              <span className="text-white/70">GH-REG-000000</span>
-            </span>
-            <span className="w-px h-3 bg-white/20" />
-            <span className="flex items-center gap-1.5">
-              <span className="text-secondary font-semibold tracking-wide uppercase text-[9px]">Recruit. Lic.</span>
-              <span className="text-white/70">GHA-LIC-000000</span>
-            </span>
-          </div>
-
-          {/* Right - phone numbers */}
-          <div className="flex items-center gap-4 ml-auto">
-            <a
-              href="tel:+233247789031"
-              className="flex items-center gap-1.5 hover:text-white transition-colors duration-200"
-            >
-              <Phone size={11} className="text-secondary shrink-0" />
-              <span>024 778 9031</span>
-            </a>
-            <span className="w-px h-3 bg-white/20" />
-            <a
-              href="tel:+233247789031"
-              className="flex items-center gap-1.5 hover:text-white transition-colors duration-200"
-            >
-              <Phone size={11} className="text-secondary shrink-0" />
-              <span>024 203 5562</span>
-            </a>
-          </div>
-
-          {/* Socials */}
-          <div className="hidden md:flex items-center gap-1.5 border-l border-white/20 pl-4">
-            <SocialLinks itemClassName="w-5 h-5 rounded-full bg-white/10 hover:bg-white/20 hover:text-white transition-colors" iconSize={11} />
-          </div>
-
-        </div>
-      </div>
-
-      {/* 1. NAVIGATION */}
-      <header className="fixed top-11 left-0 right-0 z-50 flex justify-center">
-        <div className="container mx-auto px-6 md:px-12">
-          <div className={`w-full rounded-[4px] border backdrop-blur-md px-5 py-2.5 flex items-center justify-between gap-4 transition-all duration-500 ${isScrolled
-            ? 'bg-white/20 shadow-lg border-white/20'
-            : 'bg-white/5 border-white/10'
-            }`}>
-
-            {/* Logo - left */}
-            <Link href="/" className="flex items-center shrink-0 gap-2.5">
-              <img src="/logo.webp" alt="CS Franddos" loading="lazy" className="h-8 w-auto" />
-              <span className={`text-base font-bold tracking-wider uppercase transition-colors duration-300 ${isScrolled ? 'text-primary' : 'text-white'
-                }`}>
-                CS <span className="text-secondary">Franddos</span>
-              </span>
-            </Link>
-
-            {/* Desktop Nav - centre pill */}
-            <nav className={`hidden lg:flex items-center justify-center gap-1 rounded-full py-2 px-4 backdrop-blur-md border transition-all duration-500 ${isScrolled
-              ? 'bg-white/30 border-primary/10'
-              : 'bg-white/10 border-white/15'
-              }`}>
-              {['Home', 'Services', 'Destinations', 'About', 'Insights', 'Contact'].map((item) => {
-                const isRoute = item === 'Services' || item === 'Destinations' || item === 'About' || item === 'Insights' || item === 'Contact';
-                const href = isRoute ? `/${item.toLowerCase()}` : `#${item.toLowerCase()}`;
-                const Tag = isRoute ? Link : 'a';
-                return (
-                  <Tag
-                    key={item}
-                    href={href}
-                    className={`group flex items-center text-[11px] font-semibold uppercase tracking-wider transition-colors duration-300 hover:text-white px-3 py-2 rounded-full hover:bg-accent ${isScrolled ? 'text-primary' : 'text-white'
-                      }`}
-                  >
-                    <span className="block overflow-hidden h-[14px] leading-[14px]">
-                      <span className="flex flex-col transition-transform duration-500 ease-out group-hover:-translate-y-[14px]">
-                        <span className="block h-[14px]">{item}</span>
-                        <span className="block h-[14px]">{item}</span>
-                      </span>
-                    </span>
-                  </Tag>
-                );
-              })}
-            </nav>
-
-            {/* CTA - right */}
-            <div className="flex items-center gap-3 shrink-0">
-              <Button variant="cta" size="sm" onClick={() => openCta()} className="group shadow-sm hover:shadow-md hover:-translate-y-0.5 hidden lg:inline-flex">
-                <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                  <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                </span>
-              </Button>
-
-              {/* Mobile Menu Toggle */}
-              <button
-                className={`lg:hidden p-1.5 rounded-lg transition-colors ${isScrolled ? 'text-primary hover:bg-primary/5' : 'text-white hover:bg-white/10'}`}
-                onClick={() => setIsMobileMenuOpen(true)}
-                aria-label="Open menu"
-              >
-                <Menu size={22} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      {/* MOBILE SLIDE-IN MENU */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              key="backdrop"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-primary/60 backdrop-blur-sm z-[60]"
-              onClick={() => setIsMobileMenuOpen(false)}
-            />
-            {/* Panel */}
-            <motion.div
-              key="panel"
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 28, stiffness: 220 }}
-              className="fixed top-0 right-0 h-full w-[300px] sm:w-[340px] bg-white z-[70] flex flex-col shadow-2xl"
-            >
-              {/* Panel Header */}
-              <div className="flex items-center justify-between px-7 py-6 border-b border-border/60">
-                <div className="flex items-center gap-2">
-                  <img src="/logo.webp" alt="CS Franddos" loading="lazy" className="h-8 w-auto" />
-                  <span className="text-lg font-bold tracking-tight text-primary">
-                    CS <span className="text-secondary">Franddos</span>
-                  </span>
-                </div>
-                <button
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="w-9 h-9 rounded-full bg-muted flex items-center justify-center text-primary hover:bg-accent hover:text-white transition-colors btn-flip-icon"
-                  aria-label="Close menu"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-
-              {/* Nav Links */}
-              <nav className="flex flex-col px-7 pt-6 pb-4 flex-1 overflow-y-auto">
-                {['Home', 'Services', 'Destinations', 'About', 'Insights', 'Contact'].map((item, i) => {
-                  const isRoute = item === 'Services' || item === 'Destinations' || item === 'About' || item === 'Insights' || item === 'Contact';
-                  const href = isRoute ? `/${item.toLowerCase()}` : `#${item.toLowerCase()}`;
-                  return isRoute ? (
-                    <Link
-                      key={item}
-                      href={href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="group flex items-center justify-between py-4 border-b border-border/40 last:border-0"
-                    >
-                      <span className="text-xl font-serif text-primary group-hover:text-accent transition-colors">{item}</span>
-                      <ChevronRight size={18} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-                    </Link>
-                  ) : (
-                    <motion.a
-                      key={item}
-                      initial={{ opacity: 0, x: 24 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.05 + i * 0.07, type: 'spring', stiffness: 300, damping: 30 }}
-                      href={href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="group flex items-center justify-between py-4 border-b border-border/40 last:border-0"
-                    >
-                      <span className="text-xl font-serif text-primary group-hover:text-accent transition-colors">{item}</span>
-                      <ChevronRight size={18} className="text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all" />
-                    </motion.a>
-                  );
-                })}
-              </nav>
-
-              {/* Panel Footer */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.42 }}
-                className="px-7 py-7 border-t border-border/60 space-y-3"
-              >
-                <Button variant="cta" size="lg" onClick={() => { setIsMobileMenuOpen(false); openCta(); }} className="group w-full shadow-md hover:-translate-y-0.5">
-                  <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                    <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                  </span>
-                </Button>
-                <p className="text-center text-sm text-muted-foreground pt-1">
-                  Call us: <a href="tel:+233247789031" className="text-accent font-medium hover:underline">024 778 9031</a>
-                </p>
-              </motion.div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
 
       {/* 2. HERO SECTION */}
       <section className="relative h-screen w-full flex flex-col overflow-hidden bg-[#0A1628]">
@@ -615,86 +393,51 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. POPULAR TOUR PACKAGES */}
+      {/* 7. CURRENT OPEN POSITIONS */}
       <section className="py-24 md:py-32 bg-background">
         <div className="container mx-auto px-6 md:px-12">
-          <Reveal y={30} duration={0.8} className="flex flex-col items-center text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">
-              Discover Beautiful Places<br className="hidden sm:block" /> Around the World
-            </h2>
-            <p className="text-muted-foreground max-w-xl text-lg">
-              Handpicked travel packages with everything taken care of - from visas to accommodation.
-            </p>
-          </Reveal>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { img: parisImg, name: 'Paris', country: 'France', rating: 4.9, reviews: 1200, price: '₵1,299', duration: '6 Day 5 Night', slug: 'paris' },
-              { img: dubaiImg, name: 'Dubai', country: 'UAE', rating: 5.0, reviews: 2148, price: '₵999', duration: '4 Day 3 Night', slug: 'dubai' },
-              { img: londonImg, name: 'London', country: 'UK', rating: 4.8, reviews: 1850, price: '₵1,499', duration: '7 Day 6 Night', slug: 'london' },
-              { img: torontoImg, name: 'Toronto', country: 'Canada', rating: 4.9, reviews: 980, price: '₵1,199', duration: '5 Day 4 Night', slug: 'toronto' },
-              { img: nycImg, name: 'New York', country: 'USA', rating: 4.7, reviews: 3200, price: '₵1,350', duration: '6 Day 5 Night', slug: 'new-york' },
-              { img: amsterdamImg, name: 'Amsterdam', country: 'Netherlands', rating: 4.8, reviews: 740, price: '₵1,099', duration: '5 Day 4 Night', slug: 'amsterdam' },
-            ].map((pkg, i) => (
-              <Link key={i} href={`/destination/${pkg.slug}`} className="block">
-                <Reveal
-                  delay={i * 0.1}
-                  y={30}
-                  duration={0.8}
-                  className="group bg-white rounded overflow-hidden shadow-sm transition-shadow duration-500 flex flex-col cursor-pointer hover:-translate-y-1.5"
-                >
-                  <div className="relative h-56 overflow-hidden">
-                    <img
-                      src={pkg.img}
-                      alt={pkg.name}
-                      loading="lazy"
-                      onError={(e) => { (e.target as HTMLImageElement).src = '/fallback.jpg' }}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center gap-1.5 bg-accent/85 backdrop-blur-sm text-white text-[11px] font-bold tracking-widest uppercase rounded-full px-3.5 py-1.5 shadow-md border border-white/20">
-                        <MapPin size={9} />
-                        {pkg.country}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl font-serif font-bold text-primary mb-1">{pkg.name}, {pkg.country}</h3>
-
-                    <div className="flex items-center gap-1.5 mb-4">
-                      <Star size={13} className="fill-secondary text-secondary" />
-                      <span className="text-sm font-medium text-foreground">{pkg.rating.toFixed(1)}/5</span>
-                      <span className="text-xs text-muted-foreground">({pkg.reviews.toLocaleString()}+ reviews)</span>
-                    </div>
-
-                    <div className="h-px bg-border mb-4" />
-
-                    <div className="flex items-center justify-between mt-auto">
-                      <div>
-                        <span className="text-2xl font-serif font-bold text-primary">{pkg.price}</span>
-                        <span className="text-xs text-muted-foreground ml-1">/ {pkg.duration}</span>
-                      </div>
-                      <span className="flex items-center gap-1.5 text-sm font-medium text-primary border border-primary/30 group-hover:bg-accent group-hover:text-white group-hover:border-accent rounded-full px-4 py-1.5 transition-all duration-300">
-                        <span>View Details</span>
-                        <ChevronRight size={13} />
-                      </span>
-                    </div>
-                  </div>
-                </Reveal>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+            <Reveal y={30} duration={0.8}>
+              <h2 className="text-4xl md:text-5xl font-serif text-primary mb-4">
+                Discover Career Opportunities<br className="hidden sm:block" /> Around the World
+              </h2>
+              <p className="text-muted-foreground max-w-2xl text-lg">
+                Explore current vacancies and start your journey to a global career with CS Franddos.
+              </p>
+            </Reveal>
+            <Reveal y={20} duration={0.8} delay={0.15}>
+              <Link href="/vacancies">
+                <Button variant="cta" size="sm" className="group shadow-sm hover:shadow-md hover:-translate-y-0.5 gap-2">
+                  View All Vacancies
+                  <ArrowRight size={16} />
+                </Button>
               </Link>
-            ))}
+            </Reveal>
           </div>
 
-          {/* Bottom CTA */}
-          <Reveal y={20} duration={0.7} delay={0.3} className="flex justify-center mt-14">
-            <Button variant="cta" size="lg" onClick={() => openCta()} className="group shadow-md hover:-translate-y-0.5">
-              <span className="overflow-hidden h-[1em] leading-[1em] flex flex-col">
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-                <span className="block transition-transform duration-500 ease-out group-hover:-translate-y-full">Start Your Journey</span>
-              </span>
-            </Button>
-          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {vacanciesLoading ? (
+              [0, 1, 2, 3].map((_, i) => (
+                <div key={i} className="flex flex-col overflow-hidden rounded-2xl border border-white/70 bg-white animate-pulse">
+                  <div className="h-52 bg-muted" />
+                  <div className="flex flex-1 flex-col p-6 space-y-3">
+                    <div className="h-4 w-1/2 bg-muted rounded" />
+                    <div className="h-3 w-2/3 bg-muted rounded" />
+                    <div className="h-3 w-full bg-muted rounded" />
+                    <div className="h-10 w-full bg-muted rounded-full mt-4" />
+                  </div>
+                </div>
+              ))
+            ) : vacancies.length === 0 ? (
+              <div className="col-span-full rounded-2xl border border-dashed border-border bg-white py-16 text-center text-muted-foreground">
+                No open vacancies at this time. Check back soon!
+              </div>
+            ) : (
+              vacancies.slice(0, 9).map((vacancy, i) => (
+                <VacancyCard key={vacancy._id} vacancy={vacancy} index={i} />
+              ))
+            )}
+          </div>
         </div>
       </section>
 
@@ -1149,9 +892,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 16. FOOTER */}
-      <Footer />
-
-    </div>
+      </Layout>
   );
 }

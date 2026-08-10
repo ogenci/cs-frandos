@@ -10,7 +10,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-const navItems = ['Home', 'Services', 'Destinations', 'About', 'Vacancies', 'Insights', 'Contact'];
+const navItems = ['Home', 'Services', 'About', 'Vacancies', 'Insights', 'Contact'];
 
 export default function Layout({ children }: LayoutProps) {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -27,7 +27,6 @@ export default function Layout({ children }: LayoutProps) {
   const navHref = (item: string) => {
     if (item === 'Home') return '/';
     if (item === 'Services') return '/services';
-    if (item === 'Destinations') return '/destinations';
     if (item === 'About') return '/about';
     if (item === 'Vacancies') return '/vacancies';
     if (item === 'Insights') return '/insights';

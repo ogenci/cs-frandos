@@ -4,6 +4,10 @@
   "outputDirectory": "dist/public",
   "devCommand": "vite --config vite.config.ts",
   "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    { "path": "/api/exchange-rate", "schedule": "0 12 * * *" }
   ]
 }

@@ -3,10 +3,9 @@
 
 ## Pages
 
-- [Home](https://csfranddos.com/): Company overview, featured destinations, client testimonials, services summary, FAQ
+- [Home](https://csfranddos.com/): Company overview, job vacancies, client testimonials, services summary, FAQ
 - [About](https://csfranddos.com/about/): Company history, mission, values, team milestones
 - [Services](https://csfranddos.com/services/): Travel & tour packages, international job recruitment, visa applications, passport & document assistance
-- [Destinations](https://csfranddos.com/destinations/): Travel guides for Paris, Dubai, London, Toronto, New York, and Amsterdam
 - [Insights](https://csfranddos.com/insights/): Blog articles on travel tips, visa guides, and career advice
 - [Contact](https://csfranddos.com/contact/): Contact form, office address, phone numbers, and email
 - [Reviews](https://csfranddos.com/reviews/): Client video testimonials and reviews

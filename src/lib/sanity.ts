@@ -71,10 +71,28 @@ export function getVacancies(): Promise<any[]> {
   return safeFetch(() =>
     client!.fetch(
       `*[_type == "vacancy" && status == "Open"] | order(deadline asc) {
-        _id, title, slug, location, type, department, description, requirements, deadline, status
+        _id, title, slug, location, country, type, department, description, requirements, benefits, deadline, status,
+        salaryCurrency, salaryAmount, salaryPrefix, salarySuffix, salary,
+        "thumbnailUrl": thumbnail.asset->url,
+        "rate": *[_type == "settings"][0].aedToGhsRate
       }`
     )
   ).then(r => r ?? [])
+}
+
+export function getVacancyBySlug(slug: string): Promise<any | null> {
+  if (!client) return Promise.resolve(null)
+  return safeFetch(() =>
+    client!.fetch(
+      `*[_type == "vacancy" && slug.current == $slug && status == "Open"][0] {
+        _id, title, slug, location, country, type, department, description, requirements, benefits, deadline, status,
+        salaryCurrency, salaryAmount, salaryPrefix, salarySuffix, salary,
+        "thumbnailUrl": thumbnail.asset->url,
+        "rate": *[_type == "settings"][0].aedToGhsRate
+      }`,
+      {slug}
+    )
+  )
 }
 
 export function getPosts(): Promise<any[]> {
