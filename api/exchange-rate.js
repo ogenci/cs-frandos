@@ -6,7 +6,7 @@ const DATASET = process.env.SANITY_DATASET || 'cs-franddos'
 const RATE_URL = 'https://open.er-api.com/v6/latest/AED'
 const DOC_ID = 'exchangeRate'
 
-export default async function handler(req: unknown, res: any) {
+export default async function handler(req, res) {
   try {
     const response = await fetch(RATE_URL, {headers: {accept: 'application/json'}})
     if (!response.ok) throw new Error(`Rate API responded ${response.status}`)
@@ -47,7 +47,7 @@ export default async function handler(req: unknown, res: any) {
     }
 
     return res.status(200).json({ok: true, rate, updatedAt: now})
-  } catch (e: any) {
+  } catch (e) {
     console.error('exchange-rate sync failed:', e?.message || e)
     return res.status(500).json({ok: false, error: e?.message || 'Failed to sync exchange rate'})
   }
