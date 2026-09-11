@@ -9,7 +9,7 @@ const SITE_URL = 'https://csfranddos.com'
 
 const STATIC_ROUTES = [
   '/', '/about', '/services', '/insights',
-  '/contact', '/reviews', '/vacancies',
+  '/contact', '/reviews', '/vacancies', '/privacy',
 ]
 
 let postSlugs = []

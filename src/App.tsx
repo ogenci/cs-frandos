@@ -14,6 +14,7 @@ const Contact = lazy(() => import('@/pages/Contact'));
 const Reviews = lazy(() => import('@/pages/Reviews'));
 const Post = lazy(() => import('@/pages/Post'));
 const NotFound = lazy(() => import('@/pages/not-found'));
+const PrivacyPolicy = lazy(() => import('@/pages/PrivacyPolicy'));
 const StudioPage = lazy(() => import('@/pages/StudioPage'));
 const Vacancies = lazy(() => import('@/pages/Vacancies'));
 const VacancyDetail = lazy(() => import('@/pages/VacancyDetail'));
@@ -34,6 +35,7 @@ function Router() {
           <Route path="/insights" component={Insights} />
           <Route path="/contact" component={Contact} />
           <Route path="/reviews" component={Reviews} />
+          <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/vacancies" component={Vacancies} />
           <Route path="/vacancies/:slug" component={VacancyDetail} />
           <Route path="/insights/:slug" component={Post} />

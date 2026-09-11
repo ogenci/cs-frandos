@@ -14,6 +14,7 @@ const STATIC_PAGES = [
   { loc: '/insights', priority: 0.8 },
   { loc: '/contact', priority: 0.7 },
   { loc: '/reviews', priority: 0.6 },
+  { loc: '/privacy', priority: 0.4 },
   { loc: '/vacancies', priority: 0.7 },
 ]
 

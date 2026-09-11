@@ -24,7 +24,7 @@ export default function Footer() {
               <li><a href="/vacancies" className="hover:text-secondary transition-colors">Vacancies</a></li>
               <li><a href="/#recruitment" className="hover:text-secondary transition-colors">Careers Abroad</a></li>
               <li><a href="/contact" className="hover:text-secondary transition-colors">Contact Support</a></li>
-              <li><a href="/contact" className="hover:text-secondary transition-colors">Privacy Policy</a></li>
+              <li><a href="/privacy" className="hover:text-secondary transition-colors">Privacy Policy</a></li>
             </ul>
           </div>
 
