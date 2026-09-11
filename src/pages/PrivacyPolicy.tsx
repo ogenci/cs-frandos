@@ -214,7 +214,6 @@ export default function PrivacyPolicy() {
                     <li>
                       <strong>Employers, recruitment partners, or government/consular authorities</strong>, where
                       necessary to process a specific work opportunity, visa, or travel document on your behalf.
-                      <em className="text-muted-foreground"> [Insert further detail specific to your actual process - e.g., which partners/agencies information is typically shared with, and at what stage.]</em>
                     </li>
                     <li>
                       <strong>Service providers</strong> who help us operate (e.g., form or CRM tools), under
