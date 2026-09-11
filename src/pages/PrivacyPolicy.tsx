@@ -354,7 +354,7 @@ export default function PrivacyPolicy() {
               </Link>
               <Button
                 variant="outline"
-                className="h-12 border-white/30 text-white hover:bg-white/10 hover:text-white"
+                className="h-12 bg-transparent border-white/30 text-white hover:bg-white/10 hover:text-white"
                 onClick={() => openCta()}
               >
                 Start Your Journey
