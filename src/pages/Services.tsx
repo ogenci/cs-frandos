@@ -135,7 +135,7 @@ export default function Services() {
     <Layout>
       <SEO
         title="Services"
-        description="Explore CS Franddos services — visa applications, travel & tour packages, ticketing, passport assistance, birth certificates, and international recruitment."
+        description="Explore CS Franddos services - visa applications, travel & tour packages, ticketing, passport assistance, birth certificates, and international recruitment."
         path="/services"
         jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'Services', url: 'https://csfranddos.com/services'}])}
       />

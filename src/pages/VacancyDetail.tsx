@@ -108,7 +108,7 @@ export default function VacancyDetail() {
   return (
     <Layout>
       <SEO
-        title={`${vacancy.title} — Vacancy`}
+        title={`${vacancy.title} - Vacancy`}
         description={blurb || `Apply now for the ${vacancy.title} position at CS Franddos.`}
         path={`/vacancies/${slug}`}
         image={vacancy.thumbnailUrl || undefined}

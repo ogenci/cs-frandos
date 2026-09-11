@@ -1,4 +1,4 @@
-# AED → GHS Auto-Conversion — Build Plan
+# AED → GHS Auto-Conversion - Build Plan
 
 Status: active build reference. All decisions below are confirmed by the client.
 
@@ -7,7 +7,7 @@ When a vacancy salary is entered in AED, the site automatically shows the conver
 
 ## Confirmed decisions
 - Conversion runs client-side at render time via a shared formatter (`src/lib/salary.ts`).
-- Rounding: floor to nearest 100 (`Math.floor(n / 100) * 100`) — 5,441.70 → 5,400. Applied only to AED-converted amounts; GHS amounts display exactly as entered.
+- Rounding: floor to nearest 100 (`Math.floor(n / 100) * 100`) - 5,441.70 → 5,400. Applied only to AED-converted amounts; GHS amounts display exactly as entered.
 - Rate: fetched every day at 12:00 UTC (noon Ghana) by a Vercel cron → `api/exchange-rate.ts` from `open.er-api.com` (free, no key), stored in a Sanity singleton (`_id: "exchangeRate"`, type `settings`), used for the next 24h. Hard fallback constant: `DEFAULT_AED_TO_GHS_RATE = 3.2`.
 - Display: GHS only (never shows AED). Prefix ("From") stays inline; suffix renders as a small sub-line under the figure.
 
@@ -27,7 +27,7 @@ Vercel Cron ──► api/exchange-rate.ts ──► open.er-api.com/v6/latest/A
 
 ## Files to create / change
 
-### 1. Sanity schema — `studio/schemaTypes/vacancy.ts`
+### 1. Sanity schema - `studio/schemaTypes/vacancy.ts`
 Add structured salary fields (keep legacy `salary` string as fallback):
 | Field | Type | Notes |
 |---|---|---|
@@ -37,14 +37,14 @@ Add structured salary fields (keep legacy `salary` string as fallback):
 | `salarySuffix` | string | sub-line, e.g. "+ Overtime" |
 | `salary` (kept) | string | legacy fallback, hidden in Studio |
 
-### 2. Rate document — `studio/schemaTypes/settings.ts` (new)
+### 2. Rate document - `studio/schemaTypes/settings.ts` (new)
 Singleton `settings`, `_id: "exchangeRate"`:
 - `aedToGhsRate` (number)
 - `updatedAt` (datetime)
 - `rateSource` (string)
 Register in `studio/structure.ts` as a single "Settings" document item.
 
-### 3. Formatter — `src/lib/salary.ts` (new)
+### 3. Formatter - `src/lib/salary.ts` (new)
 - `DEFAULT_AED_TO_GHS_RATE = 3.2`
 - `floorToNearest100(n)` → `Math.floor(n / 100) * 100`
 - `getSalaryParts(vacancy)` → `{ main: string, suffix: string | null }`
@@ -56,7 +56,7 @@ Register in `studio/structure.ts` as a single "Settings" document item.
   - no structured amount but legacy `salary` present → `main = salary string`, `suffix = null`
   - nothing → `"On Request"`
 
-### 4. Queries — `src/lib/sanity.ts`
+### 4. Queries - `src/lib/sanity.ts`
 In `getVacancies()` and `getVacancyBySlug()` add to projection:
 ```
 salaryCurrency, salaryAmount, salaryPrefix, salarySuffix,
@@ -75,24 +75,24 @@ salaryCurrency, salaryAmount, salaryPrefix, salarySuffix,
   ```
   and a rewrite rule so `/api/(.*)` bypasses the SPA catch-all (place BEFORE `/(.*)` → `/index.html`).
 
-### 7. Migration — `scripts/migrate-salary.mjs`
+### 7. Migration - `scripts/migrate-salary.mjs`
 One-off via `npx sanity exec` (studio token). Pads existing 17 vacancies by title. Order: amount/currency/prefix/suffix/legacy-string, then unset legacy `salary` on migrated docs.
 
 Mapping table:
 | Job | Amount | Currency | Prefix | Suffix |
 |---|---|---|---|---|
-| Landscaping Helper | 3600 | GHS | — | — |
-| Mason / Steel Fixer / Carpenter | 4200 | GHS | — | — |
-| Pastry Man / Baker | 4785 | GHS | From | — |
-| Waiter / Kitchen Boy / Room Boy / Cleaner | 3190 | GHS | From | — |
-| Laundry Man | 3509 | GHS | From | — |
-| Dispatch Rider | 1700 | AED | — | + Trip Allowance |
-| Taxi Driver | 6000 | GHS | — | (Commission-based structure also applies) |
-| Sky Loader | 3200 | GHS | — | + Overtime |
-| Aircraft Cleaner / Dnata Loader | 3500 | GHS | — | + Overtime |
-| Etihad Loader | 4500 | GHS | — | + Overtime |
-| Warehouse Worker | 5000 | GHS | — | + Overtime |
-| Security Guard | 7800 | GHS | — | — |
+| Landscaping Helper | 3600 | GHS | - | - |
+| Mason / Steel Fixer / Carpenter | 4200 | GHS | - | - |
+| Pastry Man / Baker | 4785 | GHS | From | - |
+| Waiter / Kitchen Boy / Room Boy / Cleaner | 3190 | GHS | From | - |
+| Laundry Man | 3509 | GHS | From | - |
+| Dispatch Rider | 1700 | AED | - | + Trip Allowance |
+| Taxi Driver | 6000 | GHS | - | (Commission-based structure also applies) |
+| Sky Loader | 3200 | GHS | - | + Overtime |
+| Aircraft Cleaner / Dnata Loader | 3500 | GHS | - | + Overtime |
+| Etihad Loader | 4500 | GHS | - | + Overtime |
+| Warehouse Worker | 5000 | GHS | - | + Overtime |
+| Security Guard | 7800 | GHS | - | - |
 
 ### 8. Deployment (manual step)
 - Create a Sanity read/write API token; add to Vercel project env as `SANITY_TOKEN`. Until present, site uses 3.2 fallback and cron reports failure.

@@ -316,7 +316,7 @@ export default function Post() {
         </div>
       </section>
 
-      {/* Latest Articles — above footer */}
+      {/* Latest Articles - above footer */}
       {latestBottom.length > 0 && (
         <section className="py-20 md:py-28 bg-white border-t border-border/40">
           <div className="container mx-auto px-6 md:px-12 max-w-7xl">

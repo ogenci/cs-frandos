@@ -66,7 +66,7 @@ export default function Home() {
     <Layout>
       <SEO
         title="Home"
-        description="CS Franddos Limited — travel, visa, immigration, and passport services based in Ashiaman, Ghana. Unlocking borders and building global careers."
+        description="CS Franddos Limited - travel, visa, immigration, and passport services based in Ashiaman, Ghana. Unlocking borders and building global careers."
         path="/"
         jsonLd={[organizationSchema, localBusinessSchema, faqSchema(faqItems)]}
       />

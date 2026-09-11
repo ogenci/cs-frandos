@@ -113,7 +113,7 @@ export default function Insights() {
           <Reveal y={30} duration={0.8}>
             <div className="grid grid-cols-1 lg:grid-cols-2 bg-white border border-border/60 rounded-[4px] overflow-hidden shadow-sm">
 
-              {/* Image — left, full height */}
+              {/* Image - left, full height */}
               <div className="relative h-[280px] sm:h-[360px] lg:h-auto min-h-[400px] overflow-hidden">
                 <img
                   src={featured.imageUrl || ''}
@@ -137,7 +137,7 @@ export default function Insights() {
                 </div>
               </div>
 
-              {/* Content — right */}
+              {/* Content - right */}
               <div className="flex flex-col justify-between p-8 md:p-10 lg:p-14">
                 <div>
                   {/* Meta */}
@@ -161,7 +161,7 @@ export default function Insights() {
                     {featured.title}
                   </h3>
 
-                  {/* Summary — truncated to max 180 characters */}
+                  {/* Summary - truncated to max 180 characters */}
                   {featured.summary && (
                     <p className="text-muted-foreground leading-relaxed line-clamp-3 mb-8">
                       {truncateText(featured.summary, 180)}

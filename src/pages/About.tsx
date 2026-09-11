@@ -62,7 +62,7 @@ export default function About() {
     <Layout>
       <SEO
         title="About"
-        description="Learn about CS Franddos Limited — a premium travel, visa, and international recruitment agency based in Ashiaman, Ghana."
+        description="Learn about CS Franddos Limited - a premium travel, visa, and international recruitment agency based in Ashiaman, Ghana."
         path="/about"
         jsonLd={breadcrumbSchema([{name: 'Home', url: 'https://csfranddos.com'}, {name: 'About', url: 'https://csfranddos.com/about'}])}
       />

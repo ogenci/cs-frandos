@@ -53,7 +53,7 @@ const sections = [
 ];
 
 const contactNumbers = [
-  { label: 'Main Branch — Ashiaman', numbers: ['024 778 9031', '024 203 5562', '059 873 7651', '059 825 6003'] },
+  { label: 'Main Branch - Ashiaman', numbers: ['024 778 9031', '024 203 5562', '059 873 7651', '059 825 6003'] },
   { label: 'Asesewa Branch', numbers: ['0556 972 419', '0559 858 918'] },
 ];
 
@@ -214,7 +214,7 @@ export default function PrivacyPolicy() {
                     <li>
                       <strong>Employers, recruitment partners, or government/consular authorities</strong>, where
                       necessary to process a specific work opportunity, visa, or travel document on your behalf.
-                      <em className="text-muted-foreground"> [Insert further detail specific to your actual process — e.g., which partners/agencies information is typically shared with, and at what stage.]</em>
+                      <em className="text-muted-foreground"> [Insert further detail specific to your actual process - e.g., which partners/agencies information is typically shared with, and at what stage.]</em>
                     </li>
                     <li>
                       <strong>Service providers</strong> who help us operate (e.g., form or CRM tools), under
@@ -345,7 +345,7 @@ export default function PrivacyPolicy() {
               Questions About Your Data?
             </h2>
             <p className="text-white/60 max-w-lg mx-auto mb-8 text-lg">
-              Reach out to our team — we're happy to explain how we handle your information.
+              Reach out to our team - we're happy to explain how we handle your information.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact">
